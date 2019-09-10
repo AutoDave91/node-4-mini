@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Axios from 'axios';
+
 import './HistoryModal.css';
 
 export default class HistoryModal extends Component {
@@ -12,6 +14,9 @@ export default class HistoryModal extends Component {
   
   componentDidMount() {
     // create request here
+    Axios.get('/api/messages/history')
+      .then(res => this.setState({historyMessages: res.data}))
+      .catch(err => err)
   }
   
 
